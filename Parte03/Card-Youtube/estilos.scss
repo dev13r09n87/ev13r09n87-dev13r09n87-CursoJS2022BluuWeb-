@@ -1,0 +1,86 @@
+/*  ? las variables de css se declaran en el root */
+$Dark-cyan: hsl(185, 75%, 39%);
+$Very-dark-desaturated-blue: hsl(229, 23%, 23%);
+$Dark-grayish-blue: hsl(227, 10%, 46%);
+$Dark-gray: hsla(0, 0%, 65%, 0.897);
+/* Usamos box-sizing para que respete los espacios  */
+html {
+  box-sizing: border-box;
+  font-size: 62.5%; // todo 1rem = 10px
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  background-color: $Dark-cyan;
+  
+}
+h1 {
+  font-size: 3.7rem;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.card {
+  background-color: white;
+  width: 326px;
+  border-radius: 16px;
+  overflow: hidden; // todo: como nuestra tarjeta tenia un tamaño establecido con overflow le decimos que respete ese tamaño y recorta la imgen.
+  box-shadow: 3px 3px 15px rgba(207, 201, 201, 0.7);
+
+  &-header {
+    width: 100%;
+    display: block;
+  }
+  &-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 2px solid $Dark-gray;
+
+    &-img {
+      border: 0px solid rgb(255, 255, 255);
+      border-radius: 100%;
+      margin-top: -48px;
+      object-fit: cover;
+    }
+    &-title {
+      margin-top: 2rem;
+
+      font-size: 1.8rem;
+      span {
+        font-weight: 400;
+        color: $Dark-gray;
+        margin-left: 0.3rem;
+      }
+    }
+    &-text {
+      color: $Dark-gray;
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+      margin-top: 0;
+    }
+  }
+  &-footer {
+    display: flex;
+    justify-content: space-around;
+    &-social {
+      text-align: center;
+      font-size: 1.4rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+      p {
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
