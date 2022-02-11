@@ -4,46 +4,58 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Card PokeApi</title>
+    <link rel="stylesheet" href="./css/normalize.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="./images/favicon-32x32.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="estilos.css" />
+    <title>Cards Youtube ❤</title>
   </head>
   <body>
+    <!-- Para hacer nuestra pagina web necesitamos estructurar el html-->
+    <!-- El main representa el contenido principal del Body de un documento o aplicacion -->
     <main class="flex"></main>
-
-    <div class="container my-5">
-      <section class="d-flex align-items-center d-none" id="loading">
-        <strong>Loading...</strong>
-        <div
-          class="spinner-border ms-auto"
-          role="status"
-          aria-hidden="true"
-        ></div>
-      </section>
-
-      <div class="row" id="card-dinamica">
-        <template id="template-card">
-          <article class="col-mod-6 col-lg-3 mb-3">
-            <div class="card text-center shadow">
-              <img
-                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-                alt="Imagen"
-                srcset="card-img-top"
-              />
-              <div class="card-body">
-                <h5 class="card-tittle text-primary lead">Rick Sanches</h5>
-                <p class="lead text-secondary">Humman</p>
-              </div>
-            </div>
-          </article>
-        </template>
-      </div>
-    </div>
+    <template id="template-card">
+      <!--Representa una composicion autocentenida en nuestro documento. Podria ser un mensaje en un foro un artidulo de revista o periodico , un comentario del usuario   -->
+      <article class="card">
+        <img
+          src="./images/bg-pattern-card.svg"
+          class="card-header"
+          alt="imagen"
+        />
+        <div class="card-body">
+          <img
+            src="./images/image-victor.jpg"
+            class="card-body-img"
+            alt=" imagen de vitor"
+          />
+          <h1 class="card-body-title">Victor Frank<span>26</span></h1>
+          <p class="card-body-text">London</p>
+        </div>
+        <div class="card-footer">
+          <div class="card-footer-social">
+            <h3>80K</h3>
+            <p>Ataque</p>
+          </div>
+          <div class="card-footer-social">
+            <h3>803K</h3>
+            <p>Especial</p>
+          </div>
+          <div class="card-footer-social">
+            <h3>1.4K</h3>
+            <p>Defensa</p>
+          </div>
+        </div>
+      </article>
+    </template>
   </body>
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-    crossorigin="anonymous"
-  />
-  <script src="main.js"></script>
+  <script src="js/main.js"></script>
 </html>
