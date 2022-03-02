@@ -4,17 +4,19 @@ const cardsEstudiantes = document.querySelector('#cardsEstudiantes');
 const cardsProfesores = document.querySelector('#cardsProfesores');
 const tEstudiante = document.querySelector('#templateEstudiante').content;
 const tProfesores = document.querySelector('#templateProfesore').content;
+const alert = document.querySelector(".alert"); // Agregando alerta para ingreso de datos
+
 const arrestudiantes = []; //todo  Array de todos los objetos de estudiantes
 const arrProfesor = []; // todo Array de todos los profesores.
 
 
 document.addEventListener('click', (e) => {
-    // console.log(e.target.dataset); revisar que esta mandando en el dataset
-    if (e.target.dataset.nombre) {
+    console.log(e.target.dataset); //revisar que esta mandando en el dataset
+    if (e.target.dataset.uid) {
         // console.log(e.target.matches(".btn-success")); // revisar si es true o false 
         if (e.target.matches(".btn-success")) {
             arrestudiantes.map(item => {
-                if (item.nombre === e.target.dataset.nombre) {
+                if (item.uid === e.target.dataset.uid) {
                     // solo se va a modificar si es verdadero  el que coincida  con el nombre o el id del Dataset
                     item.setEstado = true;
                 }
@@ -23,11 +25,11 @@ document.addEventListener('click', (e) => {
         }
     }
 
-    if (e.target.dataset.nombre) {
+    if (e.target.dataset.uid) {
         // console.log(e.target.matches(".btn-danger")); // revisar si es true o false 
         if (e.target.matches(".btn-danger")) {
             arrestudiantes.map(item => {
-                if (item.nombre === e.target.dataset.nombre) {
+                if (item.uid === e.target.dataset.uid) {
                     // solo se va a modificar si es verdadero  el que coincida  con el nombre o el id del Dataset
                     item.setEstado = false;
                 }
@@ -41,6 +43,8 @@ document.addEventListener('click', (e) => {
 // todo addEventListener. Cual es la ventaja de usar delegacion de eventos es que podemos acceder a contenido que aun no exiten y se evita el burbugeo
 fomulario.addEventListener('submit', (e) => {
     e.preventDefault();
+    alert.classList.add('d-none');
+
     // El FormData recibe el formulario
     const datos = new FormData(fomulario);
     // datos.forEach(item => console.log(item)); // visualizamos la informacion que viene del formulario.
@@ -54,6 +58,11 @@ fomulario.addEventListener('submit', (e) => {
     // if (opcion === "Profesor") {
 
     // }
+    if (!nombre.trim() || !edad.trim() || !opcion.trim()) {
+        console.log("mostrar alert");
+        alert.classList.remove('d-none');
+        return;
+    }
 
     switch (opcion) {
         case 'Estudiante':
@@ -81,6 +90,7 @@ class Persona {
     constructor(nombre, edad) {
         this.nombre = nombre;
         this.edad = edad;
+        this.uid = `${Date.now()}`; // Aqui usamos los template string para convertirlo a texto sino daria problemas cuando se  use para comparar por que se guarda en numeros.
     }
     // tendra la capacidad de pintar la información
     static pintarPersonaUI(personas, tipo) {
@@ -140,8 +150,8 @@ class Estudiante extends Persona {
         }
 
         clon.querySelector('.badge').textContent = this.#estado ? "Aprobado" : "Reprobado";
-        clon.querySelector('.btn-success').dataset.nombre = this.nombre;
-        clon.querySelector('.btn-danger').dataset.nombre = this.nombre;
+        clon.querySelector('.btn-success').dataset.uid = this.uid;
+        clon.querySelector('.btn-danger').dataset.uid = this.uid;
 
         return clon;
     }
